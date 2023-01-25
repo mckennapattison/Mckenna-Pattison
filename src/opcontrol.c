@@ -8,8 +8,11 @@
  */
 
 #include "main.h"
-/* deez */
-/*
+#include "chassis.h"
+Ultrasonic leftSonar;
+Ultrasonic rightSonar;
+/* 
+/* 
  * Runs the user operator control code. This function will be started in its own task with the
  * default priority and stack size whenever the robot is enabled via the Field Management System
  * or the VEX Competition Switch in the operator control mode. If the robot is disabled or
@@ -26,6 +29,42 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
+int joystickGetAnalog (
+	unsigned char joystick,
+	unsigned char axis
+
+);
+//measures how hard you push and what direction you push joystick//
+void motorSet(
+	unsigned char channel, 
+	int speed
+);
+// sets motor in code with cord and comand speed//
+void initialize () {
+	rightSonar = ultrasonicInit(2,1);
+	leftSonar = ultrasonicInit (4,3);
+}
+// defines up code ^^//
+void operatorControl(){
+	int power; 
+	int turn; 
+	//sensor determines left right position//
+	int distanceRight;
+	int distanceLeft;
+	while (1){
+		power = joystickGetAnalog (1,2);
+		turn = joystickGetAnalog (3,4);
+		chassisSet(power+turn, power-turn);
+		//power measures joy push turn measures joy turn//
+		//+turn -turn meausres motor turn//
+		//joy dig is path following//
+		if (joystickGetDigital(1,,8, JOY_RIGHT)) {
+			distanceRight = ultrasonicGet (rightSonar);
+			distanceLeft = ultrasonicGet (leftSonar);
+			//
+		}
+	}
+}
 void operatorControl() {
 	while (1) {
 		printf("Hello PROS User!\n");
