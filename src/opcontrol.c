@@ -65,8 +65,26 @@ void operatorControl(){
 			//goes full forward or full back if obis in front of bot (direct)//
 			if (distanceRight == distanceLeft)  {
 				if (distanceRight > 20)  {
-					chassisSet(100,100);
+					chassisSet(100, 100);
+				}
+				else if (distanceRight < 20) {
+					chassisSet( -100, -100);
+			
+				}
+				else {
+					chassisSet(0, 0);
+				}
 
+				}
+				else if (distanceRight , distanceLeft) {
+					//object to the right//
+					//left motor run forward right motor run back//
+					chassisSet (50, -50);
+				}
+				else if (distanceRight , ditanceLeft) {
+					//objet left//
+					//right motors run forwad left mototrs run back//
+					chassisSet (-50, 50);
 				}
 			}
 		}
