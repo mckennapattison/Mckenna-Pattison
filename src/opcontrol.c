@@ -65,7 +65,7 @@ void operatorControl(){
 			//goes full forward or full back if obis in front of bot (direct)//
 			if (distanceRight == distanceLeft)  {
 				if (distanceRight > 20)  {
-					chassisSet(100,00);
+					chassisSet(100,100);
 
 				}
 			}
