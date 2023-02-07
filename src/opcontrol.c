@@ -61,7 +61,14 @@ void operatorControl(){
 		if (joystickGetDigital(1,,8, JOY_RIGHT)) {
 			distanceRight = ultrasonicGet (rightSonar);
 			distanceLeft = ultrasonicGet (leftSonar);
-			//
+			// print f if ("the distance to the object is d%"", distance Too Object)//
+			//goes full forward or full back if obis in front of bot (direct)//
+			if (distanceRight == distanceLeft)  {
+				if (distanceRight > 20)  {
+					chassisSet(100,00);
+
+				}
+			}
 		}
 	}
 }
